@@ -132,5 +132,25 @@ cat3.products.create!({
   price: 2_483.75
 })
 
+puts "Re-creating Users"
+
+User.create!([{
+  first_name: 'Biff',
+  last_name:  'Lamewad',
+  email: 'b@b.b',
+  password_digest: '$2a$06$9ZUPxAAlZ7WxKp0DfmHRHebhJ8.pm2CaBABs.q2bwERZBgZh0zw3W' #biff
+},
+{
+  first_name: 'LeShawn',
+  last_name:  'McCoy',
+  email: 'l@l.l',
+  password_digest: '$2a$06$WDMQwkpkXr4Chi3cFZljvOBZnh7bdmNFy8WKEMUgRD77Vho35Amtu' #bills
+},
+{
+  first_name: 'Aha',
+  last_name:  'Clinton-Dix',
+  email: 'a@a.a',
+  password_digest: '$2a$06$zQWxVu7Mw.dYUBNZTp4y5.ZyPRiEUbw0TcGTKCUrGdqVHrUKNpTPS' #packers
+}])
 
 puts "DONE!"
