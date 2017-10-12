@@ -25,7 +25,6 @@
         <% line_item_total = (item.quantity * item.product.price) %>
         <% order_total += line_item_total %>
         <%= render 'item', item: item %>
-        
       <% end %>
     </tbody>
     <tfoot>

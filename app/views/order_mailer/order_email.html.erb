@@ -1,0 +1,8 @@
+
+<h1>Thank you for your Order, <%= @order.email %></h1>
+<p>Your order number is: <%= @order.id %>.<br></p>
+<% @order.line_items.each do |item| %>
+  <p>Product(s):<%= item.quantity %> <%= item.product.name %>(s) | $<%= item.product.price %></p>
+<% end %>
+<p>Total: <%= @order.total %>.</p>
+<p>Thanks for ordering, we hope to see you again!</p>
