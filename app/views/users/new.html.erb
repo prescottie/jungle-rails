@@ -1,5 +1,12 @@
-<h1>New User</h1>
+<h1>Signup!</h1>
 
-<%= render 'form' %>
+<%= form_for :user, url: '/users' do |f| %>
 
-<%= link_to 'Back', users_path %>
+  First Name: <%= f.text_field :first_name %>
+  Last Name: <%= f.text_field :last_name %>
+  Email: <%= f.text_field :email %>
+  Password: <%= f.password_field :password %>
+  Password Confirmation: <%= f.password_field :password_confirmation %>
+  <%= f.submit "Submit" %>
+
+<% end %>
