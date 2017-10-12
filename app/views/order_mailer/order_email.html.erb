@@ -4,5 +4,5 @@
 <% @order.line_items.each do |item| %>
   <p>Product(s):<%= item.quantity %> <%= item.product.name %>(s) | $<%= item.product.price %></p>
 <% end %>
-<p>Total: <%= @order.total %>.</p>
+<p>Total: $<%= @order.total %></p>
 <p>Thanks for ordering, we hope to see you again!</p>

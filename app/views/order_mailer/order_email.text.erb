@@ -3,6 +3,9 @@ _____________________________________________
 
 Your order number is: <%= @order.id %>.
 
-The total price of the order was: <%= @order.total %>.
+<% @order.line_items.each do |item| %>
+Product(s):<%= item.quantity %> <%= item.product.name %>(s) | $<%= item.product.price %>
+<% end %>
+The total price of the order was: $<%= @order.total %>.
 
 Thanks for ordering, we hope to see you again!
