@@ -27,5 +27,18 @@
     </div>
 
   </article>
+  <div class="row">
+    <h2 class="page-header"> Reviews </h2>
+    <% @product.reviews.each do |review| %>
+      <div class="well">
+        <h4> <%= review.user.first_name %><%= review.user.last_name %> 
+          <% review.rating.times do |star| %>
+            ⭐️  
+          <% end %>
+        </h4>
+        <p> <%= review.description %> </p>
+      </div>
+    <% end %>
+  </div>
 
 </section>

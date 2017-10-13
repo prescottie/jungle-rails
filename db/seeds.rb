@@ -153,4 +153,31 @@ User.create!([{
   password_digest: '$2a$06$zQWxVu7Mw.dYUBNZTp4y5.ZyPRiEUbw0TcGTKCUrGdqVHrUKNpTPS' #packers
 }])
 
+puts "Re-creating Reviews"
+
+Review.create!([{
+  product_id: 5,
+  user_id: 3,
+  description: "this was such a cool product. I love it!",
+  rating: 5
+},
+{
+  product_id: 4,
+  user_id: 1,
+  description: "I thought this was stupid!!!!!!!",
+  rating: 1
+},
+{
+  product_id: 5,
+  user_id: 2,
+  description: "Meh 😐",
+  rating: 3
+},
+{
+  product_id: 9,
+  user_id: 3,
+  description: "I'm still not sure what this product does.....",
+  rating: 5
+}])
+
 puts "DONE!"
