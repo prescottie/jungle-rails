@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   resources :products, only: [:index, :show] do
     resources :reviews, only: :create
   end
+
+  resources :reviews, only: :destroy
+
   resources :categories, only: [:show]
 
   resource :cart, only: [:show] do

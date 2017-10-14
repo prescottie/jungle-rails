@@ -1,0 +1,16 @@
+<%= form_for([@product, @review]) do |f| %>
+  <div class="form-group">
+    <%= f.label 'Description' %>
+    <%= f.text_area :description, class: "form-control", placeholder: "Tell us what you thought of #{@product.name}..." %>
+  </div>
+  <div class="form-group">
+    <%= f.label 'Rating ' %>
+    <%= f.select(:rating, (1..5))  %>
+  </div>
+   <% if current_user %>
+    <%= f.submit "Submit", class: "btn btn-primary mb-2" %>
+  <% else %>
+    <p> Please Login, to write a review </p>
+    <%= link_to 'Login', login_path, class: "btn btn-primary" %>
+  <% end %>
+<% end %>

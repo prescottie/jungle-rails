@@ -30,29 +30,24 @@
  
   <h2 class="page-header"> Reviews </h2>
     <div class="well">
-      <%= form_for :review, url: '/products/:product_id/reviews' do |f| %>
-        <div class="form-group">
-          <%= f.label 'Description' %>
-          <%= f.text_area :description, class: "form-control", placeholder: "Tell us what you thought of #{@product.name}..." %>
-        </div>
-        <div class="form-group">
-          <%= f.label 'Rating ' %>
-          <%= f.select(:rating, (1..5))  %>
-        </div>
-        <%= f.hidden_field :product_id, value: @product.id %>
-        <%= f.hidden_field :user_id, value: current_user.id %>      
-        <%= f.submit "Submit", class: "btn btn-primary mb-2" %>
-      <% end %>
+      <%= render partial:'reviews/review' %>
     </div>
      
-    <% @product.reviews.each do |review| %>
+    <% @product.reviews.reverse.each do |review| %>
       <div class="well">
-        <h4> <%= review.user.first_name %><%= review.user.last_name %> 
-          <% review.rating.times do |star| %>
-            ⭐️
+        <div class='review-header'>
+          <h4> <%= review.user.first_name %><%= review.user.last_name %> 
+            <% review.rating.times do |star| %>
+              ⭐️
+            <% end %>
+          </h4>
+          <% if current_user.id == review.user_id %>
+            <%= link_to fa_icon('trash'), review, class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: "Are you sure?" } %>
           <% end %>
-        </h4>
-        <p> <%= review.description %> </p>
+        </div>
+        <div class='row'>
+          <p class="col-md-10"> <%= review.description %> </p>
+        </div>
       </div>
     <% end %>
   
