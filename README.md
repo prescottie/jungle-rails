@@ -3,6 +3,12 @@
 A mini e-commerce application built with Rails 4.2 for purposes of teaching Rails by example.
 
 
+## Final Product
+
+![Main Page of Products](public/all-products.png)
+![Single product](public/product.png)
+
+
 ## Setup
 
 1. Fork & Clone
