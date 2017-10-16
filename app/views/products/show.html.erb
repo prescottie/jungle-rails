@@ -22,6 +22,8 @@
           <dd><%= @product.quantity %></dd>
           <dt>Price</dt>
           <dd><%= @product.price %></dd>
+          <dt>Average Rating</dt>
+          <dd><%= @product.reviews.average(:rating) %>
         </dl>
       </div>
     </div>
@@ -41,8 +43,10 @@
               ⭐️
             <% end %>
           </h4>
-          <% if current_user.id == review.user_id %>
+
+          <% if current_user && review.user_id == current_user.id %>
             <%= link_to fa_icon('trash'), review, class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: "Are you sure?" } %>
+          
           <% end %>
         </div>
         <div class='row'>
