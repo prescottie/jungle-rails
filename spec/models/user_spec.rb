@@ -74,18 +74,32 @@ RSpec.describe User, type: :model do
   end
 
   describe '.authenticate_with_credentials' do 
-    it 'should authenticate if everything is good' do
+    it 'should return user if user is authenticated' do
       user = User.new(first_name: '1', last_name: 'f', email:'test@test.test', password: 'qqq222', password_confirmation: 'qqq222')
       user.save!
       user_auth = User.authenticate_with_credentials('test@test.test', 'qqq222')
       expect(user_auth).to eq(user)
     end
 
-    it 'should not authenticate if credentials dont match' do
+    it 'should return nil if credentials dont match' do
       user = User.new(first_name: '1', last_name: 'f', email:'test@test.test', password: 'qqq222', password_confirmation: 'qqq222')
       user.save!
       user_auth = User.authenticate_with_credentials('test@test.test', 'qqq333')
-      expect(user_auth).to_not eq(user)
+      expect(user_auth).to eq(nil)
+    end
+
+    it 'should return user if email input is wrong case' do
+      user = User.new(first_name: '1', last_name: 'f', email:'test@test.test', password: 'qqq222', password_confirmation: 'qqq222')
+      user.save!
+      user_auth = User.authenticate_with_credentials('tESt@tEst.tesT', 'qqq222')
+      expect(user_auth).to eq(user)
+    end
+
+    it 'should return user if email input is has spaces' do
+      user = User.new(first_name: '1', last_name: 'f', email:'test@test.test', password: 'qqq222', password_confirmation: 'qqq222')
+      user.save!
+      user_auth = User.authenticate_with_credentials('  tESt@tEst.tesT   ', 'qqq222')
+      expect(user_auth).to eq(user)
     end
   end
 end

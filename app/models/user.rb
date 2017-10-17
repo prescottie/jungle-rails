@@ -10,7 +10,11 @@ class User < ActiveRecord::Base
   has_many :reviews
 
   def self.authenticate_with_credentials(email, password)
-    user = find_by_email(email)
-    user && user.authenticate(password)
+    user = where("LOWER(email) = ?", email.downcase.strip)[0]
+    if user && user.authenticate(password)
+      return user
+    else 
+      return nil
+    end
   end
 end
